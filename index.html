@@ -1,1 +1,267 @@
-<h1>你好！这是我的个人主页</h1>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XiongFan's Universe</title>
+    <style>
+        /* --- 全局设置 --- */
+        :root {
+            --bg-color: #0b0d17;
+            --accent-color: #00f3ff; /* 赛博朋克青 */
+            --text-color: #e0e6ed;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* --- 动态背景画布 --- */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+        }
+
+        /* --- 主容器 --- */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- 标题区域 --- */
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+        }
+
+        .typewriter {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            border-right: 2px solid var(--accent-color);
+            white-space: nowrap;
+            overflow: hidden;
+            animation: blink 0.75s step-end infinite;
+            display: inline-block;
+            margin-bottom: 50px;
+        }
+
+        /* --- 卡片区域 --- */
+        .grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 800px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            width: 280px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            color: #b0b8c4;
+            font-size: 0.95rem;
+        }
+
+        .emoji-icon {
+            font-size: 1.5rem;
+        }
+
+        /* --- 页脚 --- */
+        footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* --- 动画关键帧 --- */
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-color) }
+        }
+
+        /* --- 移动端适配 --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .grid { flex-direction: column; }
+            .card { width: 100%; box-sizing: border-box; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas-container"></canvas>
+
+    <div class="container">
+        <h1>HELLO, WORLD.</h1>
+        
+        <div id="typing-text" class="typewriter"></div>
+
+        <div class="grid">
+            <div class="card">
+                <h3><span class="emoji-icon">💻</span> Tech Enthusiast</h3>
+                <p>
+                    热衷于探索前沿技术。从构建复杂的后端架构到编写高效的算法，代码是我改变世界的工具。
+                    <br><br>
+                    <strong>Stack:</strong> Python, Java, AI Agents
+                </p>
+            </div>
+
+            <div class="card">
+                <h3><span class="emoji-icon">🚀</span> Aerospace Lover</h3>
+                <p>
+                    仰望星空，脚踏实地。痴迷于航天器设计与轨道力学。
+                    <br><br>
+                    <em>"我们的征途是星辰大海。"</em>
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2026 Xiongfan.me | Hosted on GitHub Pages
+        </footer>
+    </div>
+
+    <script>
+        // --- 1. 打字机效果脚本 ---
+        const textToType = "探索科技边界 · 追逐星辰大海";
+        const typeWriterElement = document.getElementById('typing-text');
+        let i = 0;
+
+        function typeWriter() {
+            if (i < textToType.length) {
+                typeWriterElement.innerHTML += textToType.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100); // 打字速度
+            }
+        }
+
+        // --- 2. 粒子星空背景脚本 (原生JS实现，无需外部库) ---
+        const canvas = document.getElementById('canvas-container');
+        const ctx = canvas.getContext('2d');
+        let particlesArray;
+
+        // 设置 Canvas 尺寸
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // 处理窗口大小调整
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+
+        // 粒子类
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2; // 星星大小
+                this.speedX = (Math.random() * 0.5) - 0.25; // 漂浮速度
+                this.speedY = (Math.random() * 0.5) - 0.25;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                // 边界检查（让星星从另一边出来）
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+            draw() {
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            const numberOfParticles = (canvas.height * canvas.width) / 9000; // 根据屏幕面积决定星星数量
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                // 连线效果 (模拟星座/神经网络)
+                for (let j = i; j < particlesArray.length; j++) {
+                    const dx = particlesArray[i].x - particlesArray[j].x;
+                    const dy = particlesArray[i].y - particlesArray[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 243, 255, ${0.1 - distance/1000})`; // 青色连线
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        // 启动
+        init();
+        animate();
+        // 延迟一点启动打字机
+        setTimeout(typeWriter, 500);
+
+    </script>
+</body>
+</html>
