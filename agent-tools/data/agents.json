@@ -1,0 +1,581 @@
+{
+  "agents": [
+    {
+      "id": "langchain",
+      "name": "LangChain",
+      "type": "开源",
+      "category": "通用框架",
+      "languages": ["Python", "JavaScript"],
+      "description": "最流行的LLM应用开发框架，提供丰富的工具链用于构建上下文感知、推理能力强的应用程序",
+      "website": "https://www.langchain.com/",
+      "github": "https://github.com/langchain-ai/langchain",
+      "pricing": "免费（企业版LangSmith付费）",
+      "stars": "85k+",
+      "features": [
+        "LLM集成 - 支持OpenAI、Anthropic、Google等主流模型",
+        "Chain组合 - 灵活的链式调用和工作流编排",
+        "Memory管理 - 多种对话记忆机制",
+        "向量存储 - 集成主流向量数据库",
+        "Agent框架 - ReAct、Plan-and-Execute等智能体模式",
+        "工具调用 - 丰富的工具和API集成",
+        "文档加载器 - 支持多种文档格式",
+        "输出解析器 - 结构化输出处理"
+      ],
+      "functions": {
+        "llms": {
+          "ChatOpenAI": "OpenAI聊天模型封装",
+          "OpenAI": "OpenAI补全模型",
+          "Anthropic": "Anthropic Claude模型",
+          "GooglePalm": "Google PaLM模型"
+        },
+        "chains": {
+          "LLMChain": "基础LLM调用链",
+          "ConversationalRetrievalChain": "对话式检索链",
+          "SequentialChain": "顺序执行链",
+          "RouterChain": "路由选择链"
+        },
+        "agents": {
+          "initialize_agent": "初始化智能体",
+          "AgentExecutor": "智能体执行器",
+          "create_react_agent": "创建ReAct智能体",
+          "create_structured_chat_agent": "创建结构化对话智能体"
+        },
+        "memory": {
+          "ConversationBufferMemory": "缓冲区记忆",
+          "ConversationSummaryMemory": "摘要记忆",
+          "VectorStoreRetrieverMemory": "向量存储记忆"
+        },
+        "vectorstores": {
+          "FAISS": "FAISS向量存储",
+          "Chroma": "Chroma向量数据库",
+          "Pinecone": "Pinecone云向量数据库",
+          "Weaviate": "Weaviate向量搜索引擎"
+        }
+      },
+      "pros": [
+        "生态系统最完善",
+        "文档详细",
+        "社区活跃",
+        "支持多种LLM和工具"
+      ],
+      "cons": [
+        "学习曲线较陡",
+        "抽象层次较多",
+        "版本更新快"
+      ]
+    },
+    {
+      "id": "autogen",
+      "name": "AutoGen",
+      "type": "开源",
+      "category": "多智能体框架",
+      "languages": ["Python"],
+      "description": "Microsoft开发的多智能体对话框架，支持创建可对话的智能体来协作完成复杂任务",
+      "website": "https://microsoft.github.io/autogen/",
+      "github": "https://github.com/microsoft/autogen",
+      "pricing": "免费开源",
+      "stars": "25k+",
+      "features": [
+        "多智能体对话 - 支持多个智能体间的协作",
+        "人类参与 - 人类可以参与到智能体对话中",
+        "代码执行 - 自动执行和调试代码",
+        "可定制性 - 灵活配置智能体行为",
+        "群聊模式 - 支持多智能体群组对话",
+        "工具使用 - 智能体可以调用外部工具",
+        "记忆管理 - 对话历史和上下文管理"
+      ],
+      "functions": {
+        "agents": {
+          "AssistantAgent": "助手智能体，可以调用LLM",
+          "UserProxyAgent": "用户代理智能体，可以执行代码",
+          "ConversableAgent": "可对话智能体基类",
+          "GroupChat": "群聊管理器",
+          "GroupChatManager": "群聊协调器"
+        },
+        "code_execution": {
+          "LocalCommandLineCodeExecutor": "本地命令行代码执行器",
+          "DockerCommandLineCodeExecutor": "Docker代码执行器"
+        },
+        "tools": {
+          "register_function": "注册函数工具",
+          "FunctionTool": "函数工具封装"
+        }
+      },
+      "pros": [
+        "多智能体协作能力强",
+        "代码执行安全",
+        "Microsoft支持",
+        "适合复杂任务分解"
+      ],
+      "cons": [
+        "相对较新",
+        "文档还在完善中",
+        "主要支持Python"
+      ]
+    },
+    {
+      "id": "crewai",
+      "name": "CrewAI",
+      "type": "开源",
+      "category": "多智能体框架",
+      "languages": ["Python"],
+      "description": "角色扮演的AI智能体框架，通过定义角色、目标和工具来构建协作的智能体团队",
+      "website": "https://www.crewai.com/",
+      "github": "https://github.com/joaomdmoura/crewAI",
+      "pricing": "免费开源（企业版付费）",
+      "stars": "15k+",
+      "features": [
+        "角色定义 - 为每个智能体定义角色和专长",
+        "任务分配 - 自动分配任务给合适的智能体",
+        "协作模式 - 顺序、并行、层级等多种协作模式",
+        "工具集成 - 丰富的内置工具和自定义工具",
+        "过程监控 - 实时监控智能体执行过程",
+        "记忆系统 - 短期、长期和实体记忆",
+        "人类输入 - 支持人类审核和输入"
+      ],
+      "functions": {
+        "core": {
+          "Agent": "创建智能体",
+          "Task": "定义任务",
+          "Crew": "组建智能体团队",
+          "Process": "定义执行流程"
+        },
+        "tools": {
+          "SerperDevTool": "搜索工具",
+          "WebsiteSearchTool": "网站搜索",
+          "FileReadTool": "文件读取",
+          "DirectoryReadTool": "目录读取",
+          "CodeInterpreterTool": "代码解释器"
+        },
+        "memory": {
+          "ShortTermMemory": "短期记忆",
+          "LongTermMemory": "长期记忆",
+          "EntityMemory": "实体记忆"
+        }
+      },
+      "pros": [
+        "易于上手",
+        "角色概念清晰",
+        "适合团队协作场景",
+        "文档友好"
+      ],
+      "cons": [
+        "生态相对较小",
+        "高级功能需付费",
+        "性能优化空间大"
+      ]
+    },
+    {
+      "id": "semantic-kernel",
+      "name": "Semantic Kernel",
+      "type": "开源",
+      "category": "AI编排SDK",
+      "languages": ["C#", "Python", "Java"],
+      "description": "Microsoft开发的轻量级AI编排SDK，将LLM与传统编程语言无缝集成",
+      "website": "https://learn.microsoft.com/en-us/semantic-kernel/",
+      "github": "https://github.com/microsoft/semantic-kernel",
+      "pricing": "免费开源",
+      "stars": "18k+",
+      "features": [
+        "多语言支持 - C#、Python、Java原生支持",
+        "插件系统 - 灵活的插件架构",
+        "计划器 - 自动生成执行计划",
+        "记忆系统 - 向量和语义记忆",
+        "函数调用 - 原生函数和语义函数",
+        "连接器 - 多种LLM和服务连接",
+        "模板引擎 - 提示词模板管理"
+      ],
+      "functions": {
+        "kernel": {
+          "Kernel": "核心内核对象",
+          "KernelBuilder": "内核构建器",
+          "KernelFunction": "内核函数"
+        },
+        "plugins": {
+          "KernelPlugin": "插件基类",
+          "ImportPluginFromObject": "从对象导入插件",
+          "ImportPluginFromPromptDirectory": "从提示词目录导入"
+        },
+        "planners": {
+          "SequentialPlanner": "顺序计划器",
+          "ActionPlanner": "行动计划器",
+          "StepwisePlanner": "逐步计划器"
+        },
+        "memory": {
+          "SemanticTextMemory": "语义文本记忆",
+          "VolatileMemoryStore": "易失性记忆存储",
+          "VectorMemoryStore": "向量记忆存储"
+        },
+        "connectors": {
+          "OpenAITextCompletion": "OpenAI文本补全",
+          "AzureOpenAITextCompletion": "Azure OpenAI",
+          "HuggingFaceTextCompletion": "HuggingFace连接器"
+        }
+      },
+      "pros": [
+        "企业级支持",
+        "多语言原生支持",
+        "与Microsoft生态集成好",
+        "架构清晰"
+      ],
+      "cons": [
+        "相对较新",
+        "Python版本功能较C#少",
+        "学习资源相对少"
+      ]
+    },
+    {
+      "id": "haystack",
+      "name": "Haystack",
+      "type": "开源",
+      "category": "NLP框架",
+      "languages": ["Python"],
+      "description": "端到端的NLP框架，专注于构建生产级的搜索和问答系统",
+      "website": "https://haystack.deepset.ai/",
+      "github": "https://github.com/deepset-ai/haystack",
+      "pricing": "免费开源（deepset Cloud付费）",
+      "stars": "14k+",
+      "features": [
+        "Pipeline架构 - 灵活的管道式处理流程",
+        "文档存储 - 多种文档存储后端",
+        "检索器 - 稠密、稀疏检索器",
+        "问答系统 - 抽取式和生成式QA",
+        "Agent系统 - 工具使用和决策能力",
+        "评估工具 - 完整的评估框架",
+        "生产就绪 - REST API和部署工具"
+      ],
+      "functions": {
+        "pipelines": {
+          "Pipeline": "基础管道",
+          "ExtractiveQAPipeline": "抽取式问答管道",
+          "GenerativeQAPipeline": "生成式问答管道",
+          "SearchPipeline": "搜索管道"
+        },
+        "document_stores": {
+          "ElasticsearchDocumentStore": "Elasticsearch存储",
+          "FAISSDocumentStore": "FAISS向量存储",
+          "WeaviateDocumentStore": "Weaviate存储",
+          "PineconeDocumentStore": "Pinecone存储"
+        },
+        "retrievers": {
+          "BM25Retriever": "BM25稀疏检索",
+          "DensePassageRetriever": "稠密段落检索",
+          "EmbeddingRetriever": "嵌入检索器"
+        },
+        "readers": {
+          "FARMReader": "FARM问答阅读器",
+          "TransformersReader": "Transformers阅读器"
+        },
+        "agents": {
+          "Agent": "智能体",
+          "Tool": "工具定义",
+          "ToolsManager": "工具管理器"
+        }
+      },
+      "pros": [
+        "生产级框架",
+        "检索能力强",
+        "评估工具完善",
+        "企业支持"
+      ],
+      "cons": [
+        "学习曲线陡峭",
+        "配置复杂",
+        "主要面向搜索场景"
+      ]
+    },
+    {
+      "id": "llamaindex",
+      "name": "LlamaIndex",
+      "type": "开源",
+      "category": "数据框架",
+      "languages": ["Python", "TypeScript"],
+      "description": "数据框架，用于将自定义数据源连接到大语言模型，专注于RAG应用",
+      "website": "https://www.llamaindex.ai/",
+      "github": "https://github.com/run-llama/llama_index",
+      "pricing": "免费开源（LlamaCloud付费）",
+      "stars": "32k+",
+      "features": [
+        "数据连接器 - 100+种数据源连接器",
+        "索引结构 - 多种索引和存储策略",
+        "查询引擎 - 强大的查询和检索能力",
+        "智能体 - 数据驱动的智能体",
+        "评估工具 - RAG评估框架",
+        "优化工具 - 自动优化RAG性能",
+        "可观测性 - 完整的追踪和调试"
+      ],
+      "functions": {
+        "indices": {
+          "VectorStoreIndex": "向量存储索引",
+          "ListIndex": "列表索引",
+          "TreeIndex": "树形索引",
+          "KeywordTableIndex": "关键词表索引"
+        },
+        "query_engine": {
+          "QueryEngine": "查询引擎基类",
+          "RetrieverQueryEngine": "检索器查询引擎",
+          "CitationQueryEngine": "引用查询引擎"
+        },
+        "loaders": {
+          "SimpleDirectoryReader": "目录读取器",
+          "PDFReader": "PDF读取器",
+          "DatabaseReader": "数据库读取器",
+          "NotionReader": "Notion读取器"
+        },
+        "agents": {
+          "OpenAIAgent": "OpenAI智能体",
+          "ReActAgent": "ReAct智能体",
+          "QueryPlanAgent": "查询计划智能体"
+        },
+        "evaluation": {
+          "FaithfulnessEvaluator": "忠实度评估",
+          "RelevancyEvaluator": "相关性评估",
+          "CorrectnessEvaluator": "正确性评估"
+        }
+      },
+      "pros": [
+        "RAG能力最强",
+        "数据连接器丰富",
+        "文档详细",
+        "社区活跃"
+      ],
+      "cons": [
+        "主要面向RAG场景",
+        "抽象层次高",
+        "性能优化需要经验"
+      ]
+    },
+    {
+      "id": "agentgpt",
+      "name": "AgentGPT",
+      "type": "开源",
+      "category": "自主智能体",
+      "languages": ["TypeScript"],
+      "description": "浏览器中的自主AI智能体，可以自主规划和执行任务",
+      "website": "https://agentgpt.reworkd.ai/",
+      "github": "https://github.com/reworkd/AgentGPT",
+      "pricing": "免费开源（Pro版付费）",
+      "stars": "30k+",
+      "features": [
+        "Web界面 - 无需编程的可视化界面",
+        "自主执行 - 自动分解和执行任务",
+        "长期记忆 - 任务执行历史记忆",
+        "Web搜索 - 集成搜索能力",
+        "文档生成 - 自动生成文档",
+        "多语言 - 支持多种语言",
+        "自定义API - 可以使用自己的API密钥"
+      ],
+      "functions": {
+        "agent": {
+          "createAgent": "创建智能体",
+          "runAgent": "运行智能体",
+          "stopAgent": "停止智能体"
+        },
+        "tasks": {
+          "addTask": "添加任务",
+          "executeTask": "执行任务",
+          "getTaskResult": "获取任务结果"
+        },
+        "tools": {
+          "webSearch": "网络搜索",
+          "codeExecution": "代码执行",
+          "imageGeneration": "图像生成"
+        }
+      },
+      "pros": [
+        "用户友好",
+        "无需编程",
+        "可视化界面好",
+        "快速原型"
+      ],
+      "cons": [
+        "定制化有限",
+        "不适合复杂项目",
+        "依赖外部API"
+      ]
+    },
+    {
+      "id": "superagi",
+      "name": "SuperAGI",
+      "type": "开源",
+      "category": "自主智能体框架",
+      "languages": ["Python"],
+      "description": "开源的自主AI智能体框架，提供图形界面和丰富的工具生态",
+      "website": "https://superagi.com/",
+      "github": "https://github.com/TransformerOptimus/SuperAGI",
+      "pricing": "免费开源",
+      "stars": "14k+",
+      "features": [
+        "GUI界面 - 友好的图形用户界面",
+        "并发智能体 - 同时运行多个智能体",
+        "工具市场 - 丰富的工具生态系统",
+        "性能监控 - 实时性能追踪",
+        "资源管理 - 智能的资源分配",
+        "多模型支持 - 支持多种LLM",
+        "向量数据库 - 内置向量存储"
+      ],
+      "functions": {
+        "agent": {
+          "Agent": "智能体类",
+          "AgentExecutor": "智能体执行器",
+          "AgentWorkflow": "智能体工作流"
+        },
+        "tools": {
+          "WebScraperTool": "网页抓取工具",
+          "FileWriterTool": "文件写入工具",
+          "CodeTool": "代码执行工具",
+          "SearchTool": "搜索工具"
+        },
+        "resources": {
+          "ResourceManager": "资源管理器",
+          "VectorStore": "向量存储"
+        }
+      },
+      "pros": [
+        "GUI界面友好",
+        "工具生态丰富",
+        "社区支持好",
+        "适合快速开发"
+      ],
+      "cons": [
+        "文档不够完善",
+        "稳定性有待提高",
+        "企业级功能欠缺"
+      ]
+    },
+    {
+      "id": "langsmith",
+      "name": "LangSmith",
+      "type": "商业",
+      "category": "开发平台",
+      "languages": ["Python", "JavaScript"],
+      "description": "LangChain的企业级平台，提供调试、测试、评估和监控LLM应用的完整解决方案",
+      "website": "https://www.langchain.com/langsmith",
+      "github": "闭源",
+      "pricing": "免费套餐 + 付费计划（$39/月起）",
+      "stars": "N/A",
+      "features": [
+        "调试工具 - 可视化调试LLM调用",
+        "追踪 - 完整的执行追踪",
+        "评估 - 自动化测试和评估",
+        "数据集管理 - 测试数据集管理",
+        "提示词管理 - 版本化提示词管理",
+        "监控告警 - 生产环境监控",
+        "协作功能 - 团队协作和分享"
+      ],
+      "functions": {
+        "tracing": {
+          "trace": "追踪装饰器",
+          "get_trace": "获取追踪信息",
+          "create_trace": "创建追踪"
+        },
+        "evaluation": {
+          "evaluate": "评估函数",
+          "Evaluator": "评估器",
+          "create_dataset": "创建数据集"
+        },
+        "monitoring": {
+          "log_run": "记录运行",
+          "create_feedback": "创建反馈"
+        }
+      },
+      "pros": [
+        "LangChain深度集成",
+        "调试能力强",
+        "企业级支持",
+        "易于使用"
+      ],
+      "cons": [
+        "需要付费",
+        "绑定LangChain",
+        "数据隐私考虑"
+      ]
+    },
+    {
+      "id": "fixie",
+      "name": "Fixie.ai",
+      "type": "商业",
+      "category": "AI智能体平台",
+      "languages": ["Python", "JavaScript"],
+      "description": "AI智能体开发和部署平台，提供快速构建、测试和部署智能体的能力",
+      "website": "https://www.fixie.ai/",
+      "github": "部分开源",
+      "pricing": "联系销售",
+      "stars": "N/A",
+      "features": [
+        "快速开发 - 简化的智能体开发流程",
+        "托管部署 - 一键部署到云端",
+        "API集成 - 丰富的第三方API集成",
+        "对话管理 - 多轮对话管理",
+        "安全控制 - 企业级安全措施",
+        "分析仪表板 - 使用分析和监控"
+      ],
+      "functions": {
+        "agent": {
+          "create_agent": "创建智能体",
+          "deploy_agent": "部署智能体",
+          "update_agent": "更新智能体"
+        },
+        "conversation": {
+          "start_conversation": "开始对话",
+          "send_message": "发送消息",
+          "get_history": "获取历史"
+        }
+      },
+      "pros": [
+        "部署简单",
+        "企业级",
+        "集成丰富",
+        "托管服务"
+      ],
+      "cons": [
+        "需付费",
+        "定制化受限",
+        "文档较少"
+      ]
+    },
+    {
+      "id": "relevance-ai",
+      "name": "Relevance AI",
+      "type": "商业",
+      "category": "低代码平台",
+      "languages": ["Python", "JavaScript"],
+      "description": "低代码AI工作流平台，无需编程即可构建AI应用和智能体",
+      "website": "https://relevanceai.com/",
+      "github": "闭源",
+      "pricing": "免费套餐 + 付费计划（$199/月起）",
+      "stars": "N/A",
+      "features": [
+        "可视化构建器 - 拖拽式工作流构建",
+        "预建模板 - 丰富的应用模板",
+        "数据集成 - 多种数据源连接",
+        "批量处理 - 大规模数据处理",
+        "API部署 - 一键API部署",
+        "团队协作 - 多人协作功能",
+        "版本控制 - 工作流版本管理"
+      ],
+      "functions": {
+        "workflows": {
+          "create_workflow": "创建工作流",
+          "run_workflow": "运行工作流",
+          "schedule_workflow": "定时工作流"
+        },
+        "integrations": {
+          "connect_data": "连接数据源",
+          "sync_data": "同步数据"
+        }
+      },
+      "pros": [
+        "无需编程",
+        "快速部署",
+        "模板丰富",
+        "易于使用"
+      ],
+      "cons": [
+        "价格较高",
+        "灵活性受限",
+        "依赖平台"
+      ]
+    }
+  ]
+}
